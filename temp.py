@@ -1,14 +1,20 @@
 import sys
 
-if len(sys.argv) > 1:
-    temperature = float(sys.argv[1])   
-else:
-    temperature = 25.0                 
 
-
-if temperature < 15:
-    print(f"Temperature: {temperature}°C → Cold")
-elif 15 <= temperature <= 30:
-    print(f"Temperature: {temperature}°C → Normal")
+if len(sys.argv) != 2:
+    print("No temperature provided — using default temperature of 25°C.")
+    temp = 25
 else:
-    print(f"Temperature: {temperature}°C → Hot")
+    temp = float(sys.argv[1])
+
+# Classify temperature
+if temp < 15:
+    condition = "Cold"
+elif 15 <= temp <= 30:
+    condition = "Normal"
+else:
+    condition = "Hot"
+
+# Display results
+print(f"Temperature: {temp:.2f}°C")
+print(f"Condition: {condition}")
